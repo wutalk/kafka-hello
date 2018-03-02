@@ -17,12 +17,16 @@
 
 public class KafkaConsumerProducerDemo {
     public static void main(String[] args) {
-        boolean isAsync = args.length == 0 || !args[0].trim().equalsIgnoreCase("sync");
-        Producer producerThread = new Producer(KafkaProperties.TOPIC, isAsync);
-        producerThread.start();
-
-        Consumer consumerThread = new Consumer(KafkaProperties.TOPIC);
-        consumerThread.start();
-
+        if (args.length < 1) {
+            System.out.println("Usage: java -jar kafka-hello-1.0-SNAPSHOT-jar-with-dependencies.jar producer sync");
+        }
+        if (args[0].equals("producer")) {
+            boolean isAsync = args.length == 1 || !args[1].trim().equalsIgnoreCase("sync");
+            Producer producerThread = new Producer(KafkaProperties.TOPIC, isAsync);
+            producerThread.start();
+        } else if (args[0].equals("producer")) {
+            Consumer consumerThread = new Consumer(KafkaProperties.TOPIC);
+            consumerThread.start();
+        }
     }
 }

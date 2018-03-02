@@ -22,7 +22,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>SimpleConsumerDemo</mainClass>
+                            <mainClass>KafkaConsumerProducerDemo</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
